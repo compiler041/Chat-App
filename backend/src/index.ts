@@ -5,9 +5,7 @@ const wss = new WebSocketServer({
   host: "0.0.0.0",
 });
 
-/* =======================
-   Types
-======================= */
+
 
 interface User {
   socket: WebSocket;
@@ -30,15 +28,7 @@ interface ChatMessage {
 
 type IncomingMessage = JoinMessage | ChatMessage;
 
-/* =======================
-   State
-======================= */
-
 const users: User[] = [];
-
-/* =======================
-   Helpers
-======================= */
 
 function safeParse(data: WebSocket.RawData): IncomingMessage[] | null {
   try {
@@ -54,10 +44,6 @@ function removeUser(socket: WebSocket) {
   const index = users.findIndex((u) => u.socket === socket);
   if (index !== -1) users.splice(index, 1);
 }
-
-/* =======================
-   WebSocket Logic
-======================= */
 
 wss.on("connection", (socket) => {
   console.log("Client connected");

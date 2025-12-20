@@ -28,7 +28,6 @@ function App() {
       const text = event.data.toString();
 
       setMessages((prev) => {
-        // Prevent duplicate echo of own message
         if (prev.length && prev[prev.length - 1].text === text) {
           return prev;
         }
@@ -49,7 +48,7 @@ function App() {
     const text = inputRef.current.value.trim();
     if (!text) return;
 
-    // Show immediately on the RIGHT
+    
     setMessages((prev) => [...prev, { text, self: true }]);
 
     wsRef.current.send(
@@ -64,12 +63,9 @@ function App() {
 
   return (
     <div className="h-screen bg-gray-100 flex flex-col">
-      {/* Header */}
       <div className="bg-black text-white text-center py-4 text-lg font-semibold">
-        💬 WebSocket Chat
+WebSocket Chat
       </div>
-
-      {/* Messages */}
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-2">
         {messages.map((msg, i) => (
           <div
@@ -90,7 +86,6 @@ function App() {
         ))}
       </div>
 
-      {/* Input */}
       <div className="bg-white border-t px-4 py-3 flex gap-2">
         <input
           ref={inputRef}
