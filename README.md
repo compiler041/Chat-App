@@ -1,4 +1,5 @@
 Chat Web App
+
 A simple real-time chat web application built using WebSockets, where all users join a common chat room. Messages are shared instantly, and all chat data disappears once the chat session ends.
 
 Features
